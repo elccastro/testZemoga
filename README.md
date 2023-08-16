@@ -7,9 +7,9 @@
 
 
 
-## Índice
+## Sections
 
-- [Índice](#índice)
+- [Sections](#sections)
 - [About](#about)
 - [Hands on](#hands-on)
 
