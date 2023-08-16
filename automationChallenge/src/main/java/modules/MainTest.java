@@ -1,5 +1,6 @@
 package modules;
 
+import actions.ItineraryActions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
@@ -33,6 +34,37 @@ public class MainTest {
 
         searchActions.validateResultsSearch();
         searchActions.validateFilterPrice();
+
+        driver.quit();
+    }
+
+    // User Story 2
+    @Test
+    @DisplayName("Validate itinerary of the trip")
+    public void testValidateItineraryOfTheTrip() throws InterruptedException {
+        System.setProperty("webdriver.edge.driver", "C:\\Tools\\Drivers\\Edge\\msedgedriver.exe");
+        WebDriver driver = new EdgeDriver();
+        driver.manage().window().maximize();
+
+        driver.get("https://www.carnival.com/");
+
+        HomeActions homeActions = new HomeActions(driver);
+
+        homeActions.validateSearchForm();
+        homeActions.selectSailTo();
+        homeActions.selectDuration();
+        homeActions.clicBtnSearchCruises();
+
+        SearchActions searchActions = new SearchActions(driver);
+
+        searchActions.validateResultsSearch();
+        searchActions.selectCruise();
+
+        ItineraryActions itineraryActions = new ItineraryActions(driver);
+
+        itineraryActions.validateInformationItinerary();
+        itineraryActions.validateDetailOfDay();
+        itineraryActions.validateBtnBooking();
 
         driver.quit();
     }
